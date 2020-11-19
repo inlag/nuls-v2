@@ -42,6 +42,8 @@ public class RollbackService {
     @Autowired
     private TokenService tokenService;
     @Autowired
+    private Token721Service token721Service;
+    @Autowired
     private ChainService chainService;
     @Autowired
     private AccountLedgerService ledgerService;
@@ -64,8 +66,12 @@ public class RollbackService {
     private List<String> contractTxHashList = new ArrayList<>();
     //记录每个区块智能合约相关的账户token信息
     private Map<String, AccountTokenInfo> accountTokenMap = new HashMap<>();
-    //记录合约转账信息
+    //记录每个区块智能合约相关的账户token721信息
+    private Map<String, AccountToken721Info> accountToken721Map = new HashMap<>();
+    //记录合约nrc20转账信息
     private List<String> tokenTransferHashList = new ArrayList<>();
+    //记录合约nrc721转账信息
+    private List<String> token721TransferHashList = new ArrayList<>();
     //记录链信息
     private List<ChainInfo> chainInfoList = new ArrayList<>();
     //记录每个区块交易和账户地址的关系
@@ -859,6 +865,8 @@ public class RollbackService {
         contractTxHashList.clear();
         accountTokenMap.clear();
         tokenTransferHashList.clear();
+        accountToken721Map.clear();
+        token721TransferHashList.clear();
         chainInfoList.clear();
         txRelationInfoSet.clear();
     }
