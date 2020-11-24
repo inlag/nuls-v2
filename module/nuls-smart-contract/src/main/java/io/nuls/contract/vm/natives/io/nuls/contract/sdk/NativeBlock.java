@@ -26,6 +26,7 @@ package io.nuls.contract.vm.natives.io.nuls.contract.sdk;
 
 import io.nuls.contract.model.dto.BlockHeaderDto;
 import io.nuls.contract.sdk.Block;
+import io.nuls.contract.util.Log;
 import io.nuls.contract.vm.Frame;
 import io.nuls.contract.vm.MethodArgs;
 import io.nuls.contract.vm.ObjectRef;
@@ -43,24 +44,38 @@ public class NativeBlock {
     public static final String TYPE = "io/nuls/contract/sdk/Block";
 
     public static Result nativeRun(MethodCode methodCode, MethodArgs methodArgs, Frame frame, boolean check) {
+        Result result;
+        long startTime;
         switch (methodCode.fullName) {
             case getBlockHeader:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return getBlockHeader(methodCode, methodArgs, frame);
+                    //return getBlockHeader(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = getBlockHeader(methodCode, methodArgs, frame);
+                    Log.info("Block#getBlockHeader cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case currentBlockHeader:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return currentBlockHeader(methodCode, methodArgs, frame);
+                    //return currentBlockHeader(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = currentBlockHeader(methodCode, methodArgs, frame);
+                    Log.info("Block#currentBlockHeader cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case newestBlockHeader:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return newestBlockHeader(methodCode, methodArgs, frame);
+                    //return newestBlockHeader(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = newestBlockHeader(methodCode, methodArgs, frame);
+                    Log.info("Block#newestBlockHeader cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             default:
                 if (check) {

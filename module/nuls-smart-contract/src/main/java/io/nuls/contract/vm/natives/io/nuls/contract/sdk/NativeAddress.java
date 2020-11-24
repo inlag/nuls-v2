@@ -26,6 +26,7 @@ package io.nuls.contract.vm.natives.io.nuls.contract.sdk;
 
 import io.nuls.base.basic.AddressTool;
 import io.nuls.contract.sdk.Address;
+import io.nuls.contract.util.Log;
 import io.nuls.contract.vm.*;
 import io.nuls.contract.vm.code.MethodCode;
 import io.nuls.contract.vm.exception.ErrorException;
@@ -46,48 +47,78 @@ public class NativeAddress {
     public static final String TYPE = "io/nuls/contract/sdk/Address";
 
     public static Result nativeRun(MethodCode methodCode, MethodArgs methodArgs, Frame frame, boolean check) {
+        Result result;
+        long startTime;
         switch (methodCode.fullName) {
             case balance:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return balance(methodCode, methodArgs, frame);
+                    //return balance(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = balance(methodCode, methodArgs, frame);
+                    Log.info("Address#balance cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case totalBalance:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return totalBalance(methodCode, methodArgs, frame);
+                    //return totalBalance(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = totalBalance(methodCode, methodArgs, frame);
+                    Log.info("Address#totalBalance cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case transfer:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return transfer(methodCode, methodArgs, frame);
+                    //return transfer(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = transfer(methodCode, methodArgs, frame);
+                    Log.info("Address#transfer cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case call:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return call(methodCode, methodArgs, frame);
+                    //return call(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = call(methodCode, methodArgs, frame);
+                    Log.info("Address#call cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case callWithReturnValue:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return callWithReturnValue(methodCode, methodArgs, frame);
+                    //return callWithReturnValue(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = callWithReturnValue(methodCode, methodArgs, frame);
+                    Log.info("Address#callWithReturnValue cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case valid:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return valid(methodCode, methodArgs, frame);
+                    //return valid(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = valid(methodCode, methodArgs, frame);
+                    Log.info("Address#valid cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case isContract:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return isContract(methodCode, methodArgs, frame);
+                    //return isContract(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = isContract(methodCode, methodArgs, frame);
+                    Log.info("Address#isContract cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             default:
                 if (check) {

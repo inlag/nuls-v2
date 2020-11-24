@@ -94,6 +94,7 @@ public class ContractTxCallable implements Callable<ContractResult> {
         ChainManager.chainHandle(chainId, blockType);
         BatchInfo batchInfo = contractHelper.getChain(chainId).getBatchInfo();
         String hash = tx.getHash().toHex();
+        Log.info("=====================================[开始 {}]=================================================", hash);
         if(!batchInfo.checkGasCostTotal(tx.getHash().toHex())) {
             Log.error("Exceed tx count [600] or gas limit of block [13,000,000 gas], the contract transaction [{}] revert to package queue.", hash);
             return null;
@@ -172,6 +173,7 @@ public class ContractTxCallable implements Callable<ContractResult> {
         //if (Log.isDebugEnabled()) {
             Log.info("[Per Contract Execution Cost Time] TxType is {}, TxHash is {}, Cost Time is {}", tx.getType(), tx.getHash().toString(), System.currentTimeMillis() - start);
         //}
+        Log.info("=====================================[结束 {}]=================================================", hash);
         return contractResult;
     }
 

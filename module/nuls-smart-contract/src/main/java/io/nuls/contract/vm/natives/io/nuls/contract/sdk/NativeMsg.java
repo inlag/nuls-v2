@@ -25,6 +25,7 @@
 package io.nuls.contract.vm.natives.io.nuls.contract.sdk;
 
 import io.nuls.contract.sdk.Msg;
+import io.nuls.contract.util.Log;
 import io.nuls.contract.vm.Frame;
 import io.nuls.contract.vm.MethodArgs;
 import io.nuls.contract.vm.Result;
@@ -39,42 +40,68 @@ public class NativeMsg {
     public static final String TYPE = "io/nuls/contract/sdk/Msg";
 
     public static Result nativeRun(MethodCode methodCode, MethodArgs methodArgs, Frame frame, boolean check) {
+        Result result;
+        long startTime;
         switch (methodCode.fullName) {
             case gasleft:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return gasleft(methodCode, methodArgs, frame);
+                    //return gasleft(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = gasleft(methodCode, methodArgs, frame);
+                    Log.info("Msg#gasleft cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case sender:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return sender(methodCode, methodArgs, frame);
+                    //return sender(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = sender(methodCode, methodArgs, frame);
+                    Log.info("Msg#sender cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case senderPublicKey:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return senderPublicKey(methodCode, methodArgs, frame);
+                    //return senderPublicKey(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = senderPublicKey(methodCode, methodArgs, frame);
+                    Log.info("Msg#senderPublicKey cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case value:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return value(methodCode, methodArgs, frame);
+                    //return value(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = value(methodCode, methodArgs, frame);
+                    Log.info("Msg#value cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case gasprice:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return gasprice(methodCode, methodArgs, frame);
+                    //return gasprice(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = gasprice(methodCode, methodArgs, frame);
+                    Log.info("Msg#gasprice cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case address:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return address(methodCode, methodArgs, frame);
+                    //return address(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = address(methodCode, methodArgs, frame);
+                    Log.info("Msg#address cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             default:
                 if (check) {

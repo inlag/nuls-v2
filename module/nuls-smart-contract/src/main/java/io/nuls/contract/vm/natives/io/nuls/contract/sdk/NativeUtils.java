@@ -82,72 +82,118 @@ public class NativeUtils {
     public static final String DEBUG_EVENT = "io/nuls/contract/sdk/event/DebugEvent";
 
     public static Result nativeRun(MethodCode methodCode, MethodArgs methodArgs, Frame frame, boolean check) {
+        Result result;
+        long startTime;
         switch (methodCode.fullName) {
             case revert:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return revert(methodCode, methodArgs, frame);
+                    //return revert(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = revert(methodCode, methodArgs, frame);
+                    Log.info("Utils#revert cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case emit:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return emit(methodCode, methodArgs, frame);
+                    //return emit(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = emit(methodCode, methodArgs, frame);
+                    Log.info("Utils#emit cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case sha3:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return sha3(methodCode, methodArgs, frame);
+                    //return sha3(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = sha3(methodCode, methodArgs, frame);
+                    Log.info("Utils#sha3 cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case sha3Bytes:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return sha3Bytes(methodCode, methodArgs, frame);
+                    //return sha3Bytes(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = sha3Bytes(methodCode, methodArgs, frame);
+                    Log.info("Utils#sha3Bytes cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case verifySignatureData:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return verifySignatureData(methodCode, methodArgs, frame);
+                    //return verifySignatureData(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = verifySignatureData(methodCode, methodArgs, frame);
+                    Log.info("Utils#verifySignatureData cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case getRandomSeedByCount:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return getRandomSeedByCount(methodCode, methodArgs, frame);
+                    //return getRandomSeedByCount(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = getRandomSeedByCount(methodCode, methodArgs, frame);
+                    Log.info("Utils#getRandomSeedByCount cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case getRandomSeedByHeight:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return getRandomSeedByHeight(methodCode, methodArgs, frame);
+                    //return getRandomSeedByHeight(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = getRandomSeedByHeight(methodCode, methodArgs, frame);
+                    Log.info("Utils#getRandomSeedByHeight cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case getRandomSeedListByCount:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return getRandomSeedListByCount(methodCode, methodArgs, frame);
+                    //return getRandomSeedListByCount(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = getRandomSeedListByCount(methodCode, methodArgs, frame);
+                    Log.info("Utils#getRandomSeedListByCount cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case getRandomSeedListByHeight:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return getRandomSeedListByHeight(methodCode, methodArgs, frame);
+                    //return getRandomSeedListByHeight(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = getRandomSeedListByHeight(methodCode, methodArgs, frame);
+                    Log.info("Utils#getRandomSeedListByHeight cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case invokeExternalCmd:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return invokeExternalCmd(methodCode, methodArgs, frame);
+                    //return invokeExternalCmd(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = invokeExternalCmd(methodCode, methodArgs, frame);
+                    Log.info("Utils#revert invokeExternalCmd {}", System.nanoTime() - startTime);
+                    return result;
                 }
             case obj2Json:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    return obj2Json(methodCode, methodArgs, frame);
+                    //return obj2Json(methodCode, methodArgs, frame);
+                    startTime = System.nanoTime();
+                    result = obj2Json(methodCode, methodArgs, frame);
+                    Log.info("Utils#obj2Json cost {}", System.nanoTime() - startTime);
+                    return result;
                 }
             default:
                 if (check) {
@@ -752,6 +798,7 @@ public class NativeUtils {
     }
 
     private static Object requestAndResponse(CmdRegisterManager cmdRegisterManager, String moduleCode, String cmdName, Map argsMap, Frame frame) {
+        long startTime = System.nanoTime();
         Response cmdResp;
         try {
             cmdResp = cmdRegisterManager.requestAndResponse(moduleCode, cmdName, argsMap);
@@ -760,6 +807,7 @@ public class NativeUtils {
                     String.format("Invoke external cmd failed. error: %s",
                             e.getMessage()), frame.vm.getGasUsed(), null);
         }
+        Log.info("Utils#invokeExternalCmd {} - {} requestAndResponse cost {}", moduleCode, cmdName, System.nanoTime() - startTime);
         if (!cmdResp.isSuccess()) {
             String errorCode = cmdResp.getResponseErrorCode();
             String errorMsg = cmdResp.getResponseComment();
