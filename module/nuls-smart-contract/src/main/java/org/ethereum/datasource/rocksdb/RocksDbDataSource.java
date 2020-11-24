@@ -148,7 +148,7 @@ public class RocksDbDataSource implements DbSource<byte[]> {
 
             BlockBasedTableConfig tableOption = new BlockBasedTableConfig();
             tableOption.setBlockSize(16 * 1024);
-            tableOption.setBlockCache(new LRUCache(32 * 1024 * 1024));
+            tableOption.setBlockCache(new ClockCache(32 * 1024 * 1024));
             tableOption.setCacheIndexAndFilterBlocks(true);
             tableOption.setPinL0FilterAndIndexBlocksInCache(true);
             tableOption.setBlockRestartInterval(4);
