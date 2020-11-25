@@ -140,9 +140,9 @@ public class RocksDbDataSource implements DbSource<byte[]> {
              * 优化读取性能方案
              */
             options.setAllowMmapReads(true);
-            options.setCompressionType(CompressionType.NO_COMPRESSION);
-            //options.setCompressionType(CompressionType.LZ4_COMPRESSION);
-            //options.setBottommostCompressionType(CompressionType.ZSTD_COMPRESSION);
+            //options.setCompressionType(CompressionType.NO_COMPRESSION);
+            options.setCompressionType(CompressionType.LZ4_COMPRESSION);
+            options.setBottommostCompressionType(CompressionType.ZSTD_COMPRESSION);
             //options.setLevelCompactionDynamicLevelBytes(true);
             options.setMaxOpenFiles(-1);
 
