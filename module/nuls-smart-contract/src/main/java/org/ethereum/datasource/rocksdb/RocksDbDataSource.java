@@ -22,7 +22,6 @@ import io.nuls.contract.util.Log;
 import io.nuls.core.core.ioc.SpringLiteContext;
 import io.nuls.core.model.StringUtils;
 import io.nuls.core.rockdb.manager.RocksDBManager;
-import io.nuls.core.rockdb.service.BatchOperation;
 import io.nuls.core.rockdb.service.RocksDBService;
 import io.nuls.core.rockdb.util.DBUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -129,7 +128,7 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             dataPath += File.separator + "smart-contract";
             File dir = new File(dataPath + File.separator + area);
             if (!dir.exists()) {
-                dir.mkdir();
+                dir.mkdirs();
             }
             dataPath = dataPath + File.separator + area + File.separator + "rocksdb";
             Log.info("Contract dataPath is " + dataPath);
@@ -140,9 +139,9 @@ public class RocksDbDataSource implements DbSource<byte[]> {
              * 优化读取性能方案
              */
             options.setAllowMmapReads(true);
-            //options.setCompressionType(CompressionType.NO_COMPRESSION);
-            options.setCompressionType(CompressionType.LZ4_COMPRESSION);
-            options.setBottommostCompressionType(CompressionType.ZSTD_COMPRESSION);
+            options.setCompressionType(CompressionType.NO_COMPRESSION);
+            //options.setCompressionType(CompressionType.LZ4_COMPRESSION);
+            //options.setBottommostCompressionType(CompressionType.ZSTD_COMPRESSION);
             //options.setLevelCompactionDynamicLevelBytes(true);
             options.setMaxOpenFiles(-1);
 
@@ -151,7 +150,6 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             tableOption.setBlockCache(new ClockCache(32 * 1024 * 1024));
             tableOption.setCacheIndexAndFilterBlocks(true);
             tableOption.setPinL0FilterAndIndexBlocksInCache(true);
-            tableOption.setBlockRestartInterval(4);
             tableOption.setFilterPolicy(new BloomFilter(100, true));
             options.setTableFormatConfig(tableOption);
 
@@ -202,9 +200,9 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             try {
 
                 byte[] ret = rocksDB.get(key);
-                if (Log.isInfoEnabled()) {
-                    Log.info("<~ db.get(): " + name + ", key: " + toHexString(key) + ", " + (ret == null ? "null" : ret.length) + ", cost {}", System.nanoTime() - startTime);
-                }
+                //if (Log.isInfoEnabled()) {
+                //    Log.info("<~ db.get(): " + name + ", key: " + toHexString(key) + ", " + (ret == null ? "null" : ret.length) + ", cost {}", System.nanoTime() - startTime);
+                //}
                 return ret;
             } catch (Exception e) {
                 logger.warn("Exception. Retrying again...", e);
@@ -232,8 +230,8 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             //    logger.trace("~> RocksDbDataSource.put(): " + name + ", key: " + toHexString(key) + ", " + (value == null ? "null" : value.length));
             //}
             rocksDB.put(key, value);
-            if (logger.isInfoEnabled()) {
-                logger.info("<~ RocksDbDataSource.put(): " + name + ", key: " + toHexString(key) + ", " + (value == null ? "null" : value.length));
+            if (Log.isInfoEnabled()) {
+                Log.info("<~ RocksDbDataSource.put(): " + name + ", key: " + toHexString(key) + ", " + (value == null ? "null" : value.length));
             }
         } catch (Exception e) {
             logger.error("RocksDbDataSource.put() error", e);
@@ -250,8 +248,8 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             //    logger.trace("~> RocksDbDataSource.delete(): " + name + ", key: " + toHexString(key));
             //}
             rocksDB.delete(key);
-            if (logger.isInfoEnabled()) {
-                logger.info("<~ RocksDbDataSource.delete(): " + name + ", key: " + toHexString(key));
+            if (Log.isInfoEnabled()) {
+                Log.info("<~ RocksDbDataSource.delete(): " + name + ", key: " + toHexString(key));
             }
         } catch (Exception e) {
             logger.error("RocksDbDataSource.delete() error", e);
