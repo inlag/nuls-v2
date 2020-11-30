@@ -47,61 +47,61 @@ public class NativeMsg {
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return gasleft(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = gasleft(methodCode, methodArgs, frame);
-                    Log.info("Msg#gasleft cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return gasleft(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = gasleft(methodCode, methodArgs, frame);
+                    //Log.info("Msg#gasleft cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case sender:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return sender(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = sender(methodCode, methodArgs, frame);
-                    Log.info("Msg#sender cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return sender(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = sender(methodCode, methodArgs, frame);
+                    //Log.info("Msg#sender cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case senderPublicKey:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return senderPublicKey(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = senderPublicKey(methodCode, methodArgs, frame);
-                    Log.info("Msg#senderPublicKey cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return senderPublicKey(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = senderPublicKey(methodCode, methodArgs, frame);
+                    //Log.info("Msg#senderPublicKey cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case value:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return value(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = value(methodCode, methodArgs, frame);
-                    Log.info("Msg#value cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return value(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = value(methodCode, methodArgs, frame);
+                    //Log.info("Msg#value cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case gasprice:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return gasprice(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = gasprice(methodCode, methodArgs, frame);
-                    Log.info("Msg#gasprice cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return gasprice(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = gasprice(methodCode, methodArgs, frame);
+                    //Log.info("Msg#gasprice cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case address:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return address(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = address(methodCode, methodArgs, frame);
-                    Log.info("Msg#address cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return address(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = address(methodCode, methodArgs, frame);
+                    //Log.info("Msg#address cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             default:
                 if (check) {

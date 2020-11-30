@@ -54,71 +54,71 @@ public class NativeAddress {
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return balance(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = balance(methodCode, methodArgs, frame);
-                    Log.info("Address#balance cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return balance(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = balance(methodCode, methodArgs, frame);
+                    //Log.info("Address#balance cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case totalBalance:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return totalBalance(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = totalBalance(methodCode, methodArgs, frame);
-                    Log.info("Address#totalBalance cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return totalBalance(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = totalBalance(methodCode, methodArgs, frame);
+                    //Log.info("Address#totalBalance cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case transfer:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return transfer(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = transfer(methodCode, methodArgs, frame);
-                    Log.info("Address#transfer cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return transfer(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = transfer(methodCode, methodArgs, frame);
+                    //Log.info("Address#transfer cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case call:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return call(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = call(methodCode, methodArgs, frame);
-                    Log.info("Address#call cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return call(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = call(methodCode, methodArgs, frame);
+                    //Log.info("Address#call cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case callWithReturnValue:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return callWithReturnValue(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = callWithReturnValue(methodCode, methodArgs, frame);
-                    Log.info("Address#callWithReturnValue cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return callWithReturnValue(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = callWithReturnValue(methodCode, methodArgs, frame);
+                    //Log.info("Address#callWithReturnValue cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case valid:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return valid(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = valid(methodCode, methodArgs, frame);
-                    Log.info("Address#valid cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return valid(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = valid(methodCode, methodArgs, frame);
+                    //Log.info("Address#valid cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case isContract:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return isContract(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = isContract(methodCode, methodArgs, frame);
-                    Log.info("Address#isContract cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return isContract(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = isContract(methodCode, methodArgs, frame);
+                    //Log.info("Address#isContract cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             default:
                 if (check) {

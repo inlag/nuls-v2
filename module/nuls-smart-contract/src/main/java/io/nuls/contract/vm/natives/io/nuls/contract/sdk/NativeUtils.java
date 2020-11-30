@@ -89,111 +89,111 @@ public class NativeUtils {
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return revert(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = revert(methodCode, methodArgs, frame);
-                    Log.info("Utils#revert cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return revert(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = revert(methodCode, methodArgs, frame);
+                    //Log.info("Utils#revert cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case emit:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return emit(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = emit(methodCode, methodArgs, frame);
-                    Log.info("Utils#emit cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return emit(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = emit(methodCode, methodArgs, frame);
+                    //Log.info("Utils#emit cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case sha3:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return sha3(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = sha3(methodCode, methodArgs, frame);
-                    Log.info("Utils#sha3 cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return sha3(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = sha3(methodCode, methodArgs, frame);
+                    //Log.info("Utils#sha3 cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case sha3Bytes:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return sha3Bytes(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = sha3Bytes(methodCode, methodArgs, frame);
-                    Log.info("Utils#sha3Bytes cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return sha3Bytes(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = sha3Bytes(methodCode, methodArgs, frame);
+                    //Log.info("Utils#sha3Bytes cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case verifySignatureData:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return verifySignatureData(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = verifySignatureData(methodCode, methodArgs, frame);
-                    Log.info("Utils#verifySignatureData cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return verifySignatureData(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = verifySignatureData(methodCode, methodArgs, frame);
+                    //Log.info("Utils#verifySignatureData cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case getRandomSeedByCount:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return getRandomSeedByCount(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = getRandomSeedByCount(methodCode, methodArgs, frame);
-                    Log.info("Utils#getRandomSeedByCount cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return getRandomSeedByCount(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = getRandomSeedByCount(methodCode, methodArgs, frame);
+                    //Log.info("Utils#getRandomSeedByCount cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case getRandomSeedByHeight:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return getRandomSeedByHeight(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = getRandomSeedByHeight(methodCode, methodArgs, frame);
-                    Log.info("Utils#getRandomSeedByHeight cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return getRandomSeedByHeight(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = getRandomSeedByHeight(methodCode, methodArgs, frame);
+                    //Log.info("Utils#getRandomSeedByHeight cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case getRandomSeedListByCount:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return getRandomSeedListByCount(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = getRandomSeedListByCount(methodCode, methodArgs, frame);
-                    Log.info("Utils#getRandomSeedListByCount cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return getRandomSeedListByCount(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = getRandomSeedListByCount(methodCode, methodArgs, frame);
+                    //Log.info("Utils#getRandomSeedListByCount cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case getRandomSeedListByHeight:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return getRandomSeedListByHeight(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = getRandomSeedListByHeight(methodCode, methodArgs, frame);
-                    Log.info("Utils#getRandomSeedListByHeight cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return getRandomSeedListByHeight(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = getRandomSeedListByHeight(methodCode, methodArgs, frame);
+                    //Log.info("Utils#getRandomSeedListByHeight cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case invokeExternalCmd:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return invokeExternalCmd(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = invokeExternalCmd(methodCode, methodArgs, frame);
-                    Log.info("Utils#revert invokeExternalCmd {}", System.nanoTime() - startTime);
-                    return result;
+                    return invokeExternalCmd(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = invokeExternalCmd(methodCode, methodArgs, frame);
+                    //Log.info("Utils#revert invokeExternalCmd {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             case obj2Json:
                 if (check) {
                     return SUPPORT_NATIVE;
                 } else {
-                    //return obj2Json(methodCode, methodArgs, frame);
-                    startTime = System.nanoTime();
-                    result = obj2Json(methodCode, methodArgs, frame);
-                    Log.info("Utils#obj2Json cost {}", System.nanoTime() - startTime);
-                    return result;
+                    return obj2Json(methodCode, methodArgs, frame);
+                    //startTime = System.nanoTime();
+                    //result = obj2Json(methodCode, methodArgs, frame);
+                    //Log.info("Utils#obj2Json cost {}", System.nanoTime() - startTime);
+                    //return result;
                 }
             default:
                 if (check) {
