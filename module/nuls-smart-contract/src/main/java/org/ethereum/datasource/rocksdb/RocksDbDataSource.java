@@ -132,7 +132,7 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             RocksDBManager.init(dataPath, customOptions());
             //boolean migrationData = true;
             String tableName;
-            for (int i = 0; i < 129; i++) {
+            for (int i = 0; i < 32; i++) {
                 tableName = AREA + i;
                 if (RocksDBManager.getTable(tableName) != null) {
                     //migrationData = false;
@@ -150,24 +150,6 @@ public class RocksDbDataSource implements DbSource<byte[]> {
         }
     }
 
-    private void migrationData() throws RocksDBException {
-        byte[] key;
-        byte[] value;
-        byte first;
-        Integer index;
-        RocksDB table = RocksDBManager.getTable("contract_1");
-        RocksDB _table;
-        try (RocksIterator iterator = table.newIterator()) {
-            for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-                key = iterator.key();
-                value = iterator.value();
-                first = key[0];
-                index = Math.abs((int) first);
-                _table = RocksDBManager.getTable(AREA + index);
-                _table.put(key, value);
-            }
-        }
-    }
     //private RocksDB createTable(String area) {
     //    try {
     //        if (StringUtils.isBlank(area)) {
@@ -233,7 +215,7 @@ public class RocksDbDataSource implements DbSource<byte[]> {
         tableOption.setCacheIndexAndFilterBlocks(true);
         tableOption.setPinL0FilterAndIndexBlocksInCache(true);
         tableOption.setBlockRestartInterval(4);
-        tableOption.setFilterPolicy(new BloomFilter(100, true));
+        tableOption.setFilterPolicy(new BloomFilter(10, true));
         options.setTableFormatConfig(tableOption);
 
         options.setMaxBackgroundCompactions(6);
@@ -251,9 +233,11 @@ public class RocksDbDataSource implements DbSource<byte[]> {
         return RocksDBManager.getTable(AREA + index);
     }
 
-    private int getIndex(byte[] key) {
-        byte first = key[0];
-        return Math.abs((int) first);
+    protected int getIndex(byte[] hash) {
+        byte first = hash[0];
+        Integer hashKey = Math.abs(first);
+        hashKey = hashKey % 32;
+        return hashKey;
     }
 
     @Override

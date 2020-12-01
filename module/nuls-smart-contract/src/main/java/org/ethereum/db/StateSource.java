@@ -68,9 +68,9 @@ public class StateSource extends SourceChainBox<byte[], byte[], byte[], byte[]>
         //OperatingSystemMXBean mem = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
         //long memorySize = mem.getTotalPhysicalMemorySize() / 1024 / 1024;
         //Log.info("Total RAM：{} MB", memorySize);
-        int maxCapacity = size * 1024 * 10;
+        int maxCapacity = size * 1024 * 5;
         //if (memorySize >= 15000) {
-        //    maxCapacity = maxCapacity * 2;
+        //    maxCapacity = maxCapacity * 4;
         //}
         readCache.withMaxCapacity(maxCapacity); // 512 - approx size of a node
     }
