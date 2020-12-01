@@ -25,6 +25,7 @@ package io.nuls.contract.mock.basetest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.nuls.contract.base.Base;
+import io.nuls.contract.config.ContractConfig;
 import io.nuls.contract.manager.ChainManager;
 import io.nuls.contract.manager.CmdRegisterManager;
 import io.nuls.contract.model.bo.Chain;
@@ -66,6 +67,13 @@ public class MockBase extends Base {
 
     @Before
     public void setUp() {
+        ContractConfig contractConfig = new ContractConfig();
+        contractConfig.setDataPath("./data");
+        SpringLiteContext.putBean("io.nuls.contract.config.ContractConfig", contractConfig);
+        ContractConfig bean = SpringLiteContext.getBean(ContractConfig.class);
+        if (bean == null) {
+            return;
+        }
         Chain chain = new Chain();
         ConfigBean configBean = new ConfigBean();
         configBean.setChainId(2);
