@@ -139,10 +139,10 @@ public class RocksDbDataSource implements DbSource<byte[]> {
              * 优化读取性能方案
              */
             options.setAllowMmapReads(true);
-            options.setCompressionType(CompressionType.NO_COMPRESSION);
-            //options.setCompressionType(CompressionType.LZ4_COMPRESSION);
-            //options.setBottommostCompressionType(CompressionType.ZSTD_COMPRESSION);
-            //options.setLevelCompactionDynamicLevelBytes(true);
+            //options.setCompressionType(CompressionType.NO_COMPRESSION);
+            options.setCompressionType(CompressionType.LZ4_COMPRESSION);
+            options.setBottommostCompressionType(CompressionType.ZSTD_COMPRESSION);
+            options.setLevelCompactionDynamicLevelBytes(true);
             options.setMaxOpenFiles(-1);
 
             BlockBasedTableConfig tableOption = new BlockBasedTableConfig();
@@ -150,7 +150,7 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             tableOption.setBlockCache(new ClockCache(32 * 1024 * 1024));
             tableOption.setCacheIndexAndFilterBlocks(true);
             tableOption.setPinL0FilterAndIndexBlocksInCache(true);
-            tableOption.setFilterPolicy(new BloomFilter(100, true));
+            tableOption.setFilterPolicy(new BloomFilter(10, true));
             options.setTableFormatConfig(tableOption);
 
             options.setMaxBackgroundCompactions(6);
@@ -158,7 +158,7 @@ public class RocksDbDataSource implements DbSource<byte[]> {
             //为压缩的输入，打开RocksDB层的预读取
             options.setCompactionReadaheadSize(128 * SizeUnit.KB);
             return RocksDB.open(options, dataPath);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             Log.error("error create table: " + area, e);
             throw new RuntimeException("error create table: " + area);
         }

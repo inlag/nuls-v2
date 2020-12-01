@@ -82,8 +82,14 @@ public class RocksDBManager {
             RocksDB db;
             String dbPath = null;
             for (File tableFile : tableFiles) {
+                Log.info("RocksDB table path is " + tableFile.getPath());
                 //缓存中已存在的数据库连接不再重复打开
                 if (!tableFile.isDirectory() || TABLES.get(tableFile.getName()) != null) {
+                    Log.info("Error table path is " + tableFile.getPath());
+                    continue;
+                }
+                if (tableFile.getPath().endsWith("contract_1")) {
+                    Log.info("Skipped table path is " + tableFile.getPath());
                     continue;
                 }
                 try {

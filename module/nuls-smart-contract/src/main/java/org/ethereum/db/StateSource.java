@@ -35,7 +35,7 @@ public class StateSource extends SourceChainBox<byte[], byte[], byte[], byte[]>
 
     public StateSource(Source<byte[], byte[]> src, boolean pruningEnabled) {
         super(src);
-        add(readCache = new ReadCache.BytesKey<>(src).withMaxCapacity(384 * 1024 * 2)); // 512 - approx size of a node
+        add(readCache = new ReadCache.BytesKey<>(src).withMaxCapacity(192 * 1024 * 2)); // 512 - approx size of a node
         readCache.setFlushSource(true);
         writeCache = new AsyncWriteCache<byte[], byte[]>(readCache) {
             @Override
@@ -58,7 +58,7 @@ public class StateSource extends SourceChainBox<byte[], byte[], byte[], byte[]>
 
     public void setConfig(SystemProperties config) {
         int size = config.getConfig().getInt("cache.stateCacheSize");
-        readCache.withMaxCapacity(size * 1024 * 20); // 512 - approx size of a node
+        readCache.withMaxCapacity(size * 1024 * 10); // 512 - approx size of a node
     }
 
     public void setCommonConfig(CommonConfig commonConfig) {
